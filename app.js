@@ -34,7 +34,7 @@ var Xsql = require('xsql'),
 // creates project's config files
 function initCommandLine (args, cb) {
     if (!fs.existsSync(args.dpath)) {
-        console.log('Config directory path doesn\'t exists!'.red);
+        console.log('[initCommandLine]: Config directory path doesn\'t exists!'.red);
         process.exit();
     }
     if (project.exists(args.dpath)) return cb();
@@ -297,7 +297,7 @@ if (require.main === module) {
         dpath: path.resolve(cli.getConfigPath())
     }
     initCommandLine(args, function (err) {
-        if (err) return console.log(err.message.red);
+        if (err) return console.log('[initCommandLine]: ' + err.message.red);
 
         args.config = require(path.join(args.dpath, 'config.json'));
         args.settings = require(path.join(args.dpath, 'settings.json'));
@@ -305,7 +305,7 @@ if (require.main === module) {
         args.users = require(path.join(args.dpath, 'users.json'));
 
         initDatabase(args, function (err) {
-            if (err) return console.log(err.message.red);
+            if (err) return console.log('[initDatabase]: ' + err.message.red);
 
             // extended settings
             initSettings(args);
@@ -313,7 +313,7 @@ if (require.main === module) {
             var app = initServer(args);
 
             app.listen(args.config.server.port, function () {
-                console.log('Express Admin listening on port'.grey,
+                console.log('[SUCCESS]: ' + 'Express Admin listening on port'.grey,
                             args.config.server.port.toString().green);
             });
         });
