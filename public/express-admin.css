@@ -164,3 +164,11 @@ footer p { margin-bottom: 0; }
     background-color: #ddd;
     -webkit-border-radius: 8px;
 }
+.table-wrap {
+	width: 100%;
+	overflow-x: auto;
+}
+.table-wrap table {
+	width: initial;
+	min-width: 100%;
+}
