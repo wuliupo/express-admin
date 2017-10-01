@@ -16,3 +16,9 @@ node_modules
 public/upload
 coverage
 .idea
+.vscode
+settings.json
+users.json
+package-lock.json
+config.json
+custom.json
